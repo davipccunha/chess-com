@@ -1,5 +1,4 @@
-
-type APIPlayerProfileData = {
+export type APIPlayerProfileData = {
     avatar: string;
     player_id: number;
     url: string;
@@ -17,7 +16,7 @@ type APIPlayerProfileData = {
     league: string;
 }
 
-type PlayerProfileData = {
+export type PlayerProfileData = {
     avatarURL: string;
     id: number;
     url: string;

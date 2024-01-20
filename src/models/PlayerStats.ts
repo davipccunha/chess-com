@@ -1,61 +1,61 @@
-type APILastStats = {
+export type APILastStats = {
     rating: number;
     date: number;
     rd: number;
 }
 
-type APIBestStats = {
+export type APIBestStats = {
     rating: number;
     date: number;
     game: string;
 }
 
-type APIRecordStats = {
+export type APIRecordStats = {
     win: number;
     loss: number;
     draw: number;
 }
 
-type LastStats = {
+export type LastStats = {
     rating: number;
     date: number;
     deviation: number;
 }
 
-type BestStats = {
+export type BestStats = {
     rating: number;
     date: number;
     gameURL: string;
 }
 
-type ResultsStats = {
+export type ResultsStats = {
     wins: number;
     losses: number;
     draws: number;
     winrate: number;
 }
 
-type APITimeClassStats = {
+export type APITimeClassStats = {
     last: APILastStats;
     best: APIBestStats;
     record: APIRecordStats;
 }
 
-type TimeClassStats = {
+export type TimeClassStats = {
     rating: number;
     last: LastStats;
     best: BestStats;
     results: ResultsStats;
 }
 
-type APIPlayerStatsData = {
+export type APIPlayerStatsData = {
     chess_daily: APITimeClassStats;
     chess_rapid: APITimeClassStats;
     chess_blitz: APITimeClassStats;
     chess_bullet: APITimeClassStats;
 }
 
-type PlayerStatsData = {
+export type PlayerStatsData = {
     daily: TimeClassStats;
     rapid: TimeClassStats;
     blitz: TimeClassStats;

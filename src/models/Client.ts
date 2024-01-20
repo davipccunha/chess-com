@@ -15,7 +15,7 @@ export default class Client {
         return new Player(profile, stats);
     }
 
-    async getPlayerProfile(username: string) {
+    private async getPlayerProfile(username: string) {
         const url = `https://api.chess.com/pub/player/${username}`;
         const response = await axios.get(url).catch(console.error);
 
@@ -37,7 +37,7 @@ export default class Client {
         return new PlayerProfile(data);
     }
 
-    async getPlayerStats(username: string) {
+    private async getPlayerStats(username: string) {
         const url = `https://api.chess.com/pub/player/${username}/stats`;
         const response = await axios.get(url).catch(console.error);
 

@@ -1,34 +1,39 @@
 {
   "name": "chess-com",
-  "version": "1.0.1",
+
+  "version": "1.0.0",
   "description": "A TS library to access information from chess.com API",
 
   "files": [
     "dist/",
     "package.json",
-    "README.md"
+    "README.md",
+    "src/models/typings"
   ],
 
   "main": "dist/index.js",
-
+  
   "keywords": [
     "chess",
     "chess.com",
     "chesscom",
     "api"
   ],
+
   "repository": {
     "type": "git",
-    "url": "https://github.com/davipccunha/chess-com.git"
+    "url": "git+https://github.com/davipccunha/chess-com.git"
   },
 
   "author": "davipccunha",
-
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
   "types": "src/models/typings/index.d.ts",
+
   "license": "ISC",
+
   "dependencies": {
     "axios": "^1.6.5"
   }

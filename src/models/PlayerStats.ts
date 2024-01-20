@@ -1,3 +1,5 @@
+import { APIPlayerStatsData, PlayerStatsData, TimeClassStats } from "./typings/player-stats";
+
 export type APILastStats = {
     rating: number;
     date: number;
@@ -39,27 +41,6 @@ export type APITimeClassStats = {
     last: APILastStats;
     best: APIBestStats;
     record: APIRecordStats;
-}
-
-export type TimeClassStats = {
-    rating: number;
-    last: LastStats;
-    best: BestStats;
-    results: ResultsStats;
-}
-
-export type APIPlayerStatsData = {
-    chess_daily: APITimeClassStats;
-    chess_rapid: APITimeClassStats;
-    chess_blitz: APITimeClassStats;
-    chess_bullet: APITimeClassStats;
-}
-
-export type PlayerStatsData = {
-    daily: TimeClassStats;
-    rapid: TimeClassStats;
-    blitz: TimeClassStats;
-    bullet: TimeClassStats;
 }
 
 export default class PlayerStats {

@@ -31,22 +31,19 @@ npm install chess-com
 import chess from 'chess-com';
 ```
 
-### Getting a player's account creation timestamp
+### Getting a player's information
 ```typescript
-import chess from 'chess-com';
+import chess from 'chess-com-test';
 
-const player = await chess.getPlayer('davipccunha');
+async function run() {
+    const player = await chess.getPlayer('davipccunha');
+    if (!player) return;
 
-console.log(player.profile.joined) //1614884411
-```
+    console.log(player.profile.joined); //1614884411
+    console.log(player.stats.rapid.rating); //1202
+}
 
-### Getting a player's rapid current rating
-```typescript
-import chess from 'chess-com';
-
-const player = await chess.getPlayer('davipccunha');
-
-console.log(player.stats.rapid.rating) //1202
+run();
 ```
 
 <br>

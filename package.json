@@ -1,40 +1,36 @@
 {
   "name": "chess-com",
-
   "version": "1.0.0",
   "description": "A TS library to access information from chess.com API",
-
   "files": [
     "dist/",
     "package.json",
     "README.md",
     "src/models/typings"
   ],
-
   "main": "dist/index.js",
-  
   "keywords": [
     "chess",
     "chess.com",
     "chesscom",
     "api"
   ],
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/davipccunha/chess-com.git"
   },
-
   "author": "davipccunha",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docs": "typedoc --plugin typedoc-plugin-rename-defaults"
   },
-
   "types": "src/models/typings/index.d.ts",
-
   "license": "ISC",
-
   "dependencies": {
     "axios": "^1.6.5"
+  },
+  "devDependencies": {
+    "typedoc": "^0.25.7",
+    "typedoc-plugin-rename-defaults": "^0.7.0"
   }
 }

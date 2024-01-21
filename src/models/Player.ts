@@ -2,7 +2,10 @@ import PlayerProfile from "./PlayerProfile";
 import PlayerStats from "./PlayerStats";
 
 export default class Player {
+
+    /**@hidden */
     private _profile: PlayerProfile;
+    /**@hidden */
     private _stats: PlayerStats;
     //private _games: Game[];
 

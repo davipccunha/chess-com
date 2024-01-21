@@ -1,6 +1,41 @@
-import { APIPlayerProfileData, PlayerProfileData } from "./typings/player-profile";
+// import { APIPlayerProfileData, PlayerProfileData } from "./typings/player-profile";
+export type APIPlayerProfileData = {
+    avatar: string;
+    player_id: number;
+    url: string;
+    name: string;
+    username: string;
+    followers: number;
+    country: string;
+    location: string;
+    last_online: number;
+    joined: number;
+    status: string;
+    is_streamer: boolean;
+    twitch_url?: string;
+    verified: boolean;
+    league: string;
+}
+
+export type PlayerProfileData = {
+    avatarURL: string;
+    id: number;
+    url: string;
+    name: string;
+    username: string;
+    followers: number;
+    country: string;
+    location: string;
+    lastOnline: number;
+    joined: number;
+    isPremium: boolean;
+    isStreamer: boolean;
+    twitchURL?: string;
+    isVerified: boolean;
+}
 
 export default class PlayerProfile {
+    /**@hidden */
     private data: PlayerProfileData;
 
     constructor(data: APIPlayerProfileData) {

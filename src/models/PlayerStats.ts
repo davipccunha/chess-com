@@ -1,4 +1,25 @@
-import { APIPlayerStatsData, PlayerStatsData, TimeClassStats } from "./typings/player-stats";
+// import { APIPlayerStatsData, PlayerStatsData, TimeClassStats } from "./typings/player-stats";
+
+export type APIPlayerStatsData = {
+    chess_daily: APITimeClassStats;
+    chess_rapid: APITimeClassStats;
+    chess_blitz: APITimeClassStats;
+    chess_bullet: APITimeClassStats;
+}
+
+export type PlayerStatsData = {
+    daily: TimeClassStats;
+    rapid: TimeClassStats;
+    blitz: TimeClassStats;
+    bullet: TimeClassStats;
+}
+
+export type TimeClassStats = {
+    rating: number;
+    last: LastStats;
+    best: BestStats;
+    results: ResultsStats;
+}
 
 export type APILastStats = {
     rating: number;
@@ -44,6 +65,7 @@ export type APITimeClassStats = {
 }
 
 export default class PlayerStats {
+    /**@hidden */
     private data: PlayerStatsData;
 
     constructor(data: APIPlayerStatsData) {
@@ -58,22 +80,56 @@ export default class PlayerStats {
         this.data = statsData;
     }
 
+    //TODO: Make a single function that returns the stats for a given time class -> Enum for time class
+
+    /**
+     * 
+     * Returns the stats from the daily time class
+     * 
+     * @returns PlayerStatsData for daily games
+     */
     get daily() {
         return this.data.daily;
     }
 
+    /**
+     * 
+     * Returns the stats from the rapid time class
+     * 
+     * @returns PlayerStatsData for rapid games
+     */
     get rapid() {
         return this.data.rapid;
     }
 
+    /**
+     * 
+     * Returns the stats from the blitz time class
+     * 
+     * @returns PlayerStatsData for blitz games
+     */
     get blitz() {
         return this.data.blitz;
     }
 
+    /**
+     * 
+     * Returns the stats from the bullet time class
+     * 
+     * @returns PlayerStatsData for bullet games
+     */
     get bullet() {
         return this.data.bullet;
     }
 
+    /**
+     * @hidden
+     * 
+     * Converts the API data to a more usable format and removes unnecessary data
+     * 
+     * @param data APITimeClassStats
+     * @returns TimeClassStats
+     */
     private convertData(data: APITimeClassStats) {
         const newData: TimeClassStats = {
             rating: data.last?.rating,
@@ -98,6 +154,16 @@ export default class PlayerStats {
         return newData;
     }
 
+    /**
+     * @hidden
+     * 
+     * Calculates the winrate from the given wins, losses and draws
+     * 
+     * @param wins number
+     * @param losses number
+     * @param draws number
+     * @returns number
+     */
     private getWinrate(wins: number, losses: number, draws: number) {
         if (!wins && !losses && !draws) return 0;
         if (wins + losses + draws == 0) return 0;

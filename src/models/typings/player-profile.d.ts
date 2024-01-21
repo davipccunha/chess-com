@@ -23,7 +23,7 @@ export type PlayerProfileData = {
     name: string;
     username: string;
     followers: number;
-    country: string | null;
+    country: string;
     location: string;
     lastOnline: number;
     joined: number;

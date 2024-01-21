@@ -109,5 +109,11 @@
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
+  },
+  
+  "typedocOptions": {
+    "entryPoints": ["src/**/*.ts"],
+    "out": "docs",
+    "exclude": ["src/models/typings/*.ts", "src/index.ts"]
   }
 }

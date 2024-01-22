@@ -58,11 +58,11 @@ export default class DailyPuzzle {
     }
 
     /**
-     * The URL of the puzzle's starting position image
+     * The URL of an image representing the puzzle's starting position
      * @type {string}
      * @readonly
      */
-    get image() {
+    get imageURL() {
         return this.data.imageURL;
     }
 

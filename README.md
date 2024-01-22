@@ -8,10 +8,10 @@
 chess-com is a Node.js module written in TypeScript that allows you to interact with chess.com public APIs and retrieve informations such as:
 
 - User's general profile info
-- User's name, country, followers count, etc.
 - User's rating
 - User's best rating match
 - User's winrate
+- Daily puzzles
 
 </br>
 

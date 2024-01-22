@@ -1,6 +1,6 @@
 {
   "name": "chess-com",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A TS library to access information from chess.com API",
   "files": [
     "dist/",

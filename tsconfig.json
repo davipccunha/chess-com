@@ -114,6 +114,6 @@
   "typedocOptions": {
     "entryPoints": ["src/**/*.ts"],
     "out": "docs",
-    "exclude": ["src/models/typings/*.ts", "src/index.ts"]
+    "exclude": ["src/models/typings/*.ts", "src/index.ts", "src/utils/*"]
   }
 }

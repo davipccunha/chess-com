@@ -17,7 +17,7 @@ chess-com is a Node.js module written in TypeScript that allows you to interact 
 
 # Installation
 ### Node.js and npm required!
-Run into your projects terminal:
+Run into your project's terminal:
 ```
 npm install chess-com
 ```

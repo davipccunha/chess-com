@@ -70,14 +70,13 @@ export default class PlayerStats {
 
     constructor(data: APIPlayerStatsData) {
 
-        const statsData = {
+        this.data = {
             daily: this.convertData(data.chess_daily),
             rapid: this.convertData(data.chess_rapid),
             blitz: this.convertData(data.chess_blitz),
             bullet: this.convertData(data.chess_bullet)
         }
 
-        this.data = statsData;
     }
 
     //TODO: Make a single function that returns the stats for a given time class -> Enum for time class

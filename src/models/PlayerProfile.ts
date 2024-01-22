@@ -40,7 +40,7 @@ export default class PlayerProfile {
 
     constructor(data: APIPlayerProfileData) {
 
-        const profileData = {
+        this.data = {
             avatarURL: data.avatar,
             id: data.player_id,
             url: data.url,
@@ -56,8 +56,6 @@ export default class PlayerProfile {
             twitchURL: data.twitch_url,
             isVerified: data.verified
         }
-
-        this.data = profileData;
     }
 
     /**

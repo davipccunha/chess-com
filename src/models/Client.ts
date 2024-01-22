@@ -3,11 +3,12 @@ import PlayerProfile from './PlayerProfile';
 import { sleep } from '../utils/utils';
 import Player from './Player';
 import PlayerStats from './PlayerStats';
+import DailyPuzzle from './DailyPuzzle';
 
 export default class Client {
 
     /**
-     * Returns a Player associated with the given username or null if the username is invalid
+     * Returns a Player object represeting the player with the given username
      * 
      * @param username chess.com username
      * @returns Player object for this username or null if not found
@@ -15,7 +16,9 @@ export default class Client {
      * @example
      * ```typescript
      * const client = new Client();
-     * const player = await client.getPlayer('Hikaru');
+     * const player = await client.getPlayer('davipccunha');
+     * 
+     * console.log(player.profile.username); // davipccunha
      * ```
      */
     async getPlayer(username: string) {
@@ -25,6 +28,31 @@ export default class Client {
         if (!profile || !stats) return null;
 
         return new Player(profile, stats);
+    }
+
+    /**
+     * 
+     * Returns a DailyPuzzle object represeting the daily puzzle
+     * 
+     * @param random If true, returns a random daily puzzle. Otherwise, returns the daily puzzle
+     * @returns DailyPuzzle object for the daily puzzle or null if not found
+     * 
+     * @example
+     * ```typescript
+     * const client = new Client();
+     * const puzzle = await client.getDailyPuzzle();
+     * 
+     * console.log(puzzle.solution); // 1. e4 e6 2. d4 d5...
+     * ```
+     */
+    async getDailyPuzzle(random = false) {
+        let url = `https://api.chess.com/pub/puzzle`;
+        if (random) url += '/random';
+
+        const response = await axios.get(url).catch(console.error);
+        if (!response) return null;
+
+        return new DailyPuzzle(response.data);
     }
 
     /**

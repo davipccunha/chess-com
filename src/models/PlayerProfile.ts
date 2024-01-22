@@ -2,6 +2,7 @@
 export type APIPlayerProfileData = {
     avatar: string;
     player_id: number;
+    title?: string;
     url: string;
     name: string;
     username: string;
@@ -20,6 +21,7 @@ export type APIPlayerProfileData = {
 export type PlayerProfileData = {
     avatarURL: string;
     id: number;
+    title?: string;
     url: string;
     name: string;
     username: string;
@@ -29,6 +31,8 @@ export type PlayerProfileData = {
     lastOnline: number;
     joined: number;
     isPremium: boolean;
+    isClosed: boolean;
+    isStaff: boolean;
     isStreamer: boolean;
     twitchURL?: string;
     isVerified: boolean;
@@ -43,6 +47,7 @@ export default class PlayerProfile {
         this.data = {
             avatarURL: data.avatar,
             id: data.player_id,
+            title: data.title,
             url: data.url,
             name: data.name,
             username: data.username,
@@ -51,7 +56,9 @@ export default class PlayerProfile {
             location: data.location,
             lastOnline: data.last_online,
             joined: data.joined,
-            isPremium: data.status !== 'basic',
+            isPremium: data.status === 'premium' || data.status === 'staff' || data.status === 'mod',
+            isClosed: data.status === 'closed' || data.status === 'closed:fair_play_violations',
+            isStaff: data.status === 'staff' || data.status === 'mod',
             isStreamer: data.is_streamer,
             twitchURL: data.twitch_url,
             isVerified: data.verified
@@ -74,6 +81,15 @@ export default class PlayerProfile {
      */
     get id() {
         return this.data.id;
+    }
+
+    /**
+     * The title abbreviation the profile has, if any
+     * @type {string}
+     * @readonly
+     */
+    get title() {
+        return this.data.title;
     }
 
     /**
@@ -158,12 +174,39 @@ export default class PlayerProfile {
     }
 
     /**
+     * A boolean representing whether or not the profile is closed
+     * @type {boolean}
+     * @readonly
+     */
+    get isClosed() {
+        return this.data.isClosed;
+    }
+
+    /**
+     * A boolean representing whether or not the profile is part of Chess.com staff
+     * @type {boolean}
+     * @readonly
+     */
+    get isStaff() {
+        return this.data.isStaff;
+    }
+
+    /**
      * A boolean representing whether or not the profile is a streamer
      * @type {boolean}
      * @readonly
      */
     get isStreamer() {
         return this.data.isStreamer;
+    }
+
+    /**
+     * The Twitch URL of the profile, if any
+     * @type {string}
+     * @readonly
+     */
+    get twitchURL() {
+        return this.data.twitchURL;
     }
 
     /**

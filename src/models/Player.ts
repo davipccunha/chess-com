@@ -31,4 +31,14 @@ export default class Player {
     get stats(): PlayerStats {
         return this._stats;
     }
+
+    // Currently not working -> Problem with the API itself
+    // async isOnline(): Promise<boolean | undefined> {
+    //     const url = `https://api.chess.com/pub/player/${this.profile.username}/is-online`;
+
+    //     const response = await axios.get(url).catch(console.error);
+    //     if (!response) return;
+
+    //     return response.data.online;
+    // }
 }

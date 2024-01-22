@@ -1,6 +1,7 @@
 export type APIPlayerProfileData = {
     avatar: string;
     player_id: number;
+    title?: string;
     url: string;
     name: string;
     username: string;
@@ -19,6 +20,7 @@ export type APIPlayerProfileData = {
 export type PlayerProfileData = {
     avatarURL: string;
     id: number;
+    title?: string;
     url: string;
     name: string;
     username: string;
@@ -28,6 +30,8 @@ export type PlayerProfileData = {
     lastOnline: number;
     joined: number;
     isPremium: boolean;
+    isClosed: boolean;
+    isStaff: boolean;
     isStreamer: boolean;
     twitchURL?: string;
     isVerified: boolean;
@@ -40,6 +44,7 @@ declare class PlayerProfile {
 
     readonly avatarURL: string;
     readonly id: number;
+    readonly title?: string;
     readonly url: string;
     readonly name: string;
     readonly username: string;
@@ -49,7 +54,10 @@ declare class PlayerProfile {
     readonly lastOnline: number;
     readonly joined: number;
     readonly isPremium: boolean;
+    readonly isClosed: boolean;
+    readonly isStaff: boolean;
     readonly isStreamer: boolean;
+    readonly twitchURL?: string;
     readonly isVerified: boolean;
 }
 

@@ -46,6 +46,21 @@ async function run() {
 run();
 ```
 
+### Getting a random daily puzzle
+```typescript
+import chess from 'chess-com';
+
+async function run() {
+    const puzzle = await chess.getDailyPuzzle(true);
+    if (!puzzle) return;
+
+    console.log(puzzle.fen); // 2r5/5Npk/4p2p/8/3P4/3pP2P/5PP1/R5K1 b - - 0 1
+    console.log(puzzle.solution); // 1...d2 2.Rd1 Rc1 3.Kf1 Rxd1+ 4.Ke2 Rf1 5.Kxd2 Rxf2+
+}
+
+run();
+```
+
 <br>
 
 # Found a problem?

@@ -19,15 +19,15 @@ export type TimeClassStats = {
     results: ResultsStats;
 }
 
+// Enum declaration stops working when exported -> Workaround is to use type
+export type TimeClass = "daily" | "rapid" | "blitz" | "bullet";
+
 declare class PlayerStats {
     private data: PlayerStatsData;
 
     constructor(data: APIPlayerStatsData);
 
-    readonly daily: TimeClassStats;
-    readonly rapid: TimeClassStats;
-    readonly blitz: TimeClassStats;
-    readonly bullet: TimeClassStats;
+    getStats(timeClass: TimeClass): TimeClassStats;
 }
 
 export = PlayerStats;

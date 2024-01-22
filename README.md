@@ -33,14 +33,14 @@ import chess from 'chess-com';
 
 ### Getting a player's information
 ```typescript
-import chess from 'chess-com-test';
+import chess from 'chess-com';
 
 async function run() {
     const player = await chess.getPlayer('davipccunha');
     if (!player) return;
 
     console.log(player.profile.joined); //1614884411
-    console.log(player.stats.rapid.rating); //1202
+    console.log(player.stats.getStats('rapid').rating); //1202
 }
 
 run();

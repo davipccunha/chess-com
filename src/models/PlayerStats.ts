@@ -64,6 +64,13 @@ export type APITimeClassStats = {
     record: APIRecordStats;
 }
 
+export const enum TimeClass {
+    DAILY = 'daily',
+    RAPID = 'rapid',
+    BLITZ = 'blitz',
+    BULLET = 'bullet'
+}
+
 export default class PlayerStats {
     /**@hidden */
     private data: PlayerStatsData;
@@ -78,47 +85,14 @@ export default class PlayerStats {
         }
 
     }
-
-    //TODO: Make a single function that returns the stats for a given time class -> Enum for time class
-
     /**
      * 
-     * Returns the stats from the daily time class
+     * Returns the stats from a specified time class
      * 
-     * @returns PlayerStatsData for daily games
+     * @returns PlayerStatsData for a TimeClass class games
      */
-    get daily() {
-        return this.data.daily;
-    }
-
-    /**
-     * 
-     * Returns the stats from the rapid time class
-     * 
-     * @returns PlayerStatsData for rapid games
-     */
-    get rapid() {
-        return this.data.rapid;
-    }
-
-    /**
-     * 
-     * Returns the stats from the blitz time class
-     * 
-     * @returns PlayerStatsData for blitz games
-     */
-    get blitz() {
-        return this.data.blitz;
-    }
-
-    /**
-     * 
-     * Returns the stats from the bullet time class
-     * 
-     * @returns PlayerStatsData for bullet games
-     */
-    get bullet() {
-        return this.data.bullet;
+    getStats(timeClass: TimeClass) {
+        return this.data[timeClass];
     }
 
     /**

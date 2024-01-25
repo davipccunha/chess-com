@@ -1,9 +1,8 @@
 import axios from 'axios';
-import PlayerProfile from './PlayerProfile';
-import { sleep } from '../utils/utils';
-import Player from './Player';
-import PlayerStats from './PlayerStats';
 import DailyPuzzle from './DailyPuzzle';
+import Player from './Player';
+import PlayerProfile from './PlayerProfile';
+import PlayerStats from './PlayerStats';
 
 export default class Client {
 
@@ -69,15 +68,11 @@ export default class Client {
             (err) => { if (err.response.statusText === 'Not Found') { } else { console.log(err) } }
         );
 
-        // Always sleeping for 100ms after a request to avoid rate limiting
-        sleep(100);
-
         if (!response) return null;
 
         const data = response.data;
 
         const APICountry = await axios.get(data.country).catch(console.error);
-        sleep(100);
 
         if (!APICountry) return null;
         const countryName = APICountry.data.name;
@@ -101,7 +96,6 @@ export default class Client {
             (err) => { if (err.response.statusText === 'Not Found') { } else { console.log(err) } }
         );
 
-        sleep(100);
         if (!response) return null;
 
         return new PlayerStats(response.data);

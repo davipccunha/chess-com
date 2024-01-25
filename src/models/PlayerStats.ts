@@ -8,17 +8,17 @@ export type APIPlayerStatsData = {
 }
 
 export type PlayerStatsData = {
-    daily: TimeClassStats;
-    rapid: TimeClassStats;
-    blitz: TimeClassStats;
-    bullet: TimeClassStats;
+    daily: TimeClassStats | null;
+    rapid: TimeClassStats | null;
+    blitz: TimeClassStats | null;
+    bullet: TimeClassStats | null;
 }
 
 export type TimeClassStats = {
     rating: number;
-    last: LastStats;
-    best: BestStats;
-    results: ResultsStats;
+    last: LastStats | null;
+    best: BestStats | null;
+    results: ResultsStats | null;
 }
 
 export type APILastStats = {
@@ -104,24 +104,25 @@ export default class PlayerStats {
      * @returns TimeClassStats
      */
     private convertData(data: APITimeClassStats) {
+        if (!data) return null;
         const newData: TimeClassStats = {
-            rating: data.last?.rating,
-            last: {
+            rating: data.last ? data.last.rating : 0,
+            last: data.last ? {
                 rating: data.last?.rating,
                 date: data.last?.date,
                 deviation: data.last?.rd
-            },
-            best: {
+            } : null,
+            best: data.best ? {
                 rating: data.best?.rating,
                 date: data.best?.date,
                 gameURL: data.best?.game
-            },
-            results: {
+            } : null,
+            results: data.record ? {
                 wins: data.record?.win,
                 losses: data.record?.loss,
                 draws: data.record?.draw,
                 winrate: this.getWinrate(data.record?.win, data.record?.loss, data.record?.draw)
-            }
+            } : null
         }
 
         return newData;

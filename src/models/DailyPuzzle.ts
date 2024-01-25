@@ -12,7 +12,7 @@ export type DailyPuzzleData = {
     timestamp: number;
     fen: string;
     imageURL: string;
-    solution: string;
+    solution: string | null;
 }
 
 export default class DailyPuzzle {
@@ -87,7 +87,7 @@ export default class DailyPuzzle {
         // The API returns a different PGN format if the puzzle is random
 
         const solution = pgn.split(']').pop()?.replace(/[\n\r]/g, '').replace('*', '').trim();
-        if (!solution) throw new Error("Could not extract solution from PGN");
+        if (!solution) return null;
 
         return solution;
 

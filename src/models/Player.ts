@@ -1,3 +1,4 @@
+import GameManager from "../managers/GameManager";
 import PlayerProfile from "./PlayerProfile";
 import PlayerStats from "./PlayerStats";
 
@@ -7,11 +8,13 @@ export default class Player {
     private _profile: PlayerProfile;
     /**@hidden */
     private _stats: PlayerStats;
-    //private _games: Game[];
+    /**@hidden */
+    private gameManager: GameManager;
 
     constructor(profile: PlayerProfile, stats: PlayerStats) {
         this._profile = profile;
         this._stats = stats;
+        this.gameManager = new GameManager(profile.username);
     }
 
     /**
@@ -30,6 +33,15 @@ export default class Player {
      */
     get stats(): PlayerStats {
         return this._stats;
+    }
+
+    /**
+     * The player's games
+     * @type {GameManager}
+     * @readonly
+     */
+    get games() {
+        return this.gameManager;
     }
 
     // Currently not working -> Problem with the API itself

@@ -7,11 +7,11 @@
 ## Interact with chess.com API
 chess-com is a Node.js module written in TypeScript that allows you to interact with chess.com public APIs and retrieve informations such as:
 
-- User's general profile info
-- User's rating
-- User's best rating match
-- User's winrate
-- Daily puzzles
+- Users' general profile info
+- Users' ratings and winrates
+- All user's matches
+- Matches' move sequences and results
+- All daily puzzles
 
 </br>
 
@@ -61,6 +61,26 @@ async function run() {
 run();
 ```
 
+### Getting the number of games the player played the French Defense opening
+```typescript
+import chess from 'chess-com';
+import { ArchivesGame } from 'chess-com/src/models/typings/game';
+
+async function run() {
+    const player = await chess.getPlayer('davipccunha');
+    if (!player) return;
+
+    const archives = await player.games.getArchivedGames();
+    if (!archives) return;
+
+    const frenchGames = archives.filter((game: ArchivesGame) => game.moves.startsWith('1. e4 e6'));
+
+    console.log(frenchGames.length); // 361
+}
+
+run();
+```
+
 <br>
 
 # Found a problem?
@@ -70,3 +90,6 @@ Please let me know of any problems found by filing an issue in [GitHub issue](ht
 Here is the list of already known problems that I'm working on a fix:
 
 -
+
+## Donations
+If you are feeling generous and/or would like to support this and other future open-source projects, you can make a donation at my [Buy me a coffee](https://www.buymeacoffee.com/davipccunha) page

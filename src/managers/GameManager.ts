@@ -1,5 +1,6 @@
 import axios from "axios";
 import { APIArchivesGameData, APICurrentDailyGameData, ArchivesGame, CurrentDailyGame } from "../models/Game";
+import { sleep } from "../utils/utils";
 
 export default class GameManager {
     private username: string;
@@ -8,6 +9,10 @@ export default class GameManager {
         this.username = username;
     }
 
+    /**
+     * Get the player's still unfinished daily games
+     * @returns {Promise<CurrentDailyGame[] | null>} The player's still unfinished daily games
+     */
     async getCurrentDailyGames(): Promise<CurrentDailyGame[] | null> {
         const url = `https://api.chess.com/pub/player/${this.username}/games`;
 
@@ -19,6 +24,12 @@ export default class GameManager {
         return games;
     }
 
+    /**
+     * Get the player's archived games filtered by month and/or year or none for all games
+     * @param month {number | undefined} The month of the games to be retrieved
+     * @param year {number | undefined} The year of the games to be retrieved
+     * @returns {Promise<ArchivesGame[] | null>} The player's archived games filtered by month and/or year or none for all games
+     */
     async getArchivedGames(month?: number, year?: number): Promise<ArchivesGame[] | null> {
         let url = `https://api.chess.com/pub/player/${this.username}/games/archives`;
         const response = await axios.get(url).catch(console.error);
@@ -56,6 +67,7 @@ async function joinGames(urls: string[]) {
 
     for (const url of urls) {
         const response = await axios.get(url).catch(console.error);
+        sleep(100);
         if (!response) return null;
 
         const gamesData = response.data.games as APIArchivesGameData[];

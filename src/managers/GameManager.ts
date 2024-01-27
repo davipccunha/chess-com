@@ -1,6 +1,5 @@
 import axios from "axios";
 import { APIArchivesGameData, APICurrentDailyGameData, ArchivesGame, CurrentDailyGame } from "../models/Game";
-import { sleep } from "../utils/utils";
 
 export default class GameManager {
     private username: string;
@@ -67,7 +66,6 @@ async function joinGames(urls: string[]) {
 
     for (const url of urls) {
         const response = await axios.get(url).catch(console.error);
-        sleep(100);
         if (!response) return null;
 
         const gamesData = response.data.games as APIArchivesGameData[];

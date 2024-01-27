@@ -282,6 +282,7 @@ export class ArchivesGame extends BaseGame {
 }
 
 function parseAccuracy(accuracy: number) {
+    if (!accuracy) return -1;
     return parseFloat(accuracy.toFixed(4));
 }
 

@@ -3,7 +3,10 @@ export function sleep(ms: number): Promise<void> {
 }
 
 export function extractMovesFromPGN(pgn: string, removeTimestamps = true) {
+    if (!pgn) return null;
+
     const pgnSplit = pgn.split('\n');
+
     let moves = pgnSplit[pgnSplit.length - 2];
 
     if (!moves) return null;

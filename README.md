@@ -64,7 +64,7 @@ run();
 ### Getting the number of games the player played the French Defense opening
 ```typescript
 import chess from 'chess-com';
-import { ArchivesGame } from 'chess-com/src/models/typings/game';
+import { ArchivesGame } from 'chess-com';
 
 async function run() {
     const player = await chess.getPlayer('davipccunha');

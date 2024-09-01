@@ -1,4 +1,4 @@
-import { extractMovesFromPGN } from "../utils/utils";
+import { capitalizeFirstLetter, extractMovesFromPGN } from "../utils/utils";
 import { TimeClass } from "./PlayerStats";
 
 export type APIGameColor = {
@@ -66,18 +66,18 @@ export type CurrentDailyGameData = BaseGameData & {
 }
 
 export enum ResultOptions {
-    'win' = 'Win',
-    'checkmated' = 'Lost by Checkmate',
-    'agreed' = 'Draw by Agreement',
-    'repetition' = 'Draw by Repetition',
-    'timeout' = 'Lost by Timeout',
-    'resigned' = 'Lost by Resignation',
-    'stalemate' = 'Draw by Stalemate',
-    'lose' = 'Lost',
-    'insufficient' = 'Draw by Insufficient Material',
+    'Win' = 'Win',
+    'Checkmated' = 'Lost by Checkmate',
+    'Agreed' = 'Draw by Agreement',
+    'Repetition' = 'Draw by Repetition',
+    'Timeout' = 'Lost by Timeout',
+    'Resigned' = 'Lost by Resignation',
+    'Stalemate' = 'Draw by Stalemate',
+    'Lose' = 'Lost',
+    'Insufficient' = 'Draw by Insufficient Material',
     '50move' = 'Draw by 50 Move Rule',
-    'abandoned' = 'Lost by Abandonment',
-    'timevsinsufficient' = 'Draw by Time vs Insufficient Material'
+    'Abandoned' = 'Lost by Abandonment',
+    'Timevsinsufficient' = 'Draw by Time vs Insufficient Material'
 }
 
 export type GameResult = {
@@ -249,7 +249,7 @@ export class ArchivesGame extends BaseGame {
             ...this.data,
             endTime: data.end_time,
             accuracy: data.accuracies ? { white: parseAccuracy(data.accuracies.white), black: parseAccuracy(data.accuracies.black) } : undefined,
-            result: { white: parseResultOption(data.white.result), black: parseResultOption(data.black.result) }
+            result: { white: capitalizeFirstLetter(data.white.result) as ResultOptions, black: capitalizeFirstLetter(data.black.result) as ResultOptions }
         }
     }
 

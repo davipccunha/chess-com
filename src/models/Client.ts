@@ -33,7 +33,7 @@ export default class Client {
      * 
      * Returns a DailyPuzzle object represeting the daily puzzle
      * 
-     * @param random If true, returns a random daily puzzle. Otherwise, returns the daily puzzle
+     * @param random If true, returns a random daily puzzle. Otherwise, returns the current daily puzzle
      * @returns DailyPuzzle object for the daily puzzle or null if not found
      * 
      * @example

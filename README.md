@@ -1,6 +1,6 @@
 <p align=”center”>
     <img src="https://i.ibb.co/T1PRHMw/chess-com-1.png" alt="banner">
-    <img src="https://img.shields.io/npm/dt/chess-com?logo=npm" alt="NPM Downloads">
+    <img src="https://img.shields.io/npm/dy/chess-com?logo=npm" alt="NPM Downloads">
 </p>
 
 # About

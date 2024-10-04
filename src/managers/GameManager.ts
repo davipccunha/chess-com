@@ -36,22 +36,23 @@ export default class GameManager {
 
         let archives = response.data.archives as string[];
 
-        const monthFilter = function (url: string) {
-            const urlSplit = url.split('/');
-            const monthString = '0' + month?.toString();
-
-            return urlSplit[urlSplit.length - 1] === monthString;
-        }
-
-        const yearFilter = function (url: string) {
-            const urlSplit = url.split('/');
-            return urlSplit[urlSplit.length - 2] === year?.toString();
-        }
-
         if (month) {
+            const monthFilter = function (url: string) {
+                const urlSplit = url.split('/');
+                const monthAsString = month.toString();
+                const monthString = monthAsString.length > 1 ? monthAsString : '0' + monthAsString;
+
+                return urlSplit[urlSplit.length - 1] === monthString;
+            }
+
             archives = archives.filter(monthFilter);
         }
         if (year) {
+            const yearFilter = function (url: string) {
+                const urlSplit = url.split('/');
+                return urlSplit[urlSplit.length - 2] === year?.toString();
+            }
+
             archives = archives.filter(yearFilter);
         }
 
